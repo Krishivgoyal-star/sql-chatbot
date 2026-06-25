@@ -21,6 +21,10 @@ def home(request: Request):
 class ChatRequest(BaseModel):
     message: str
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 @app.post("/chat")
 def chat(request: ChatRequest):
     response = process_message(request.message)
